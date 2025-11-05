@@ -1,0 +1,15 @@
+## Define the decay chain model
+
+```{r decay-model}
+decay_chain <- function(time, state, parameters) {
+  with(as.list(c(state, parameters)), {
+    dA <- -lambda1 * A
+    dB <- lambda1 * A - lambda2 * B
+    dC <- lambda2 * B
+    list(c(dA, dB, dC))
+    state <- c(A = 100, B = 0, C = 0)
+parameters <- c(lambda1 = 0.1, lambda2 = 0.05)
+time <- seq(0, 100, by = 1)
+
+  })
+}
